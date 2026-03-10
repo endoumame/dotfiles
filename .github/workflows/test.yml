@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  GITHUB_USERNAME: endou-mame
+  GITHUB_USERNAME: endoumame
 
 jobs:
   test:
