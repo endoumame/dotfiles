@@ -19,10 +19,12 @@
 .claude/history.jsonl
 .claude/stats-cache.json
 .claude/telemetry
+.claude/env-loader.sh
 
 .config/shell/zsh/.zcompcache/
 .config/shell/zsh/.zcompdump
 .config/shell/zsh/.zsh_history
+.config/shell/zsh/.zsh_sessions
 .config/github-copilot/
 .config/opencode
 

@@ -19,3 +19,7 @@ alias tree="eza --tree $EZA_DEFAULT_PARAMS"
 # bat settings
 # https://github.com/sharkdp/bat
 alias cat="bat --theme-dark default --theme-light GitHub"
+
+# neovim settings
+alias vi='nvim'
+alias vim='nvim'

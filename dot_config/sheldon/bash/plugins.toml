@@ -1,0 +1,25 @@
+shell = "bash"
+
+[plugins.brew]
+inline = '''
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -f /usr/local/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+'''
+
+[plugins.mise]
+inline = 'eval "$(mise activate bash)"'
+
+[plugins.fzf]
+inline = """
+export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
+source <(fzf --bash)
+"""
+
+[plugins.zoxide]
+inline = 'eval "$(zoxide init bash --cmd cd)"'
+
+[plugins.starship]
+inline = 'eval "$(starship init bash)"'

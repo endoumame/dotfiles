@@ -2,7 +2,9 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
     "MAX_THINKING_TOKENS": "32000",
-    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1"
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
+    "CLAUDE_ENV_FILE": "~/.claude/env-loader.sh",
+    "CLAUDE_CODE_SHELL": "/bin/bash"
   },
   "attribution": {
     "commit": "",
@@ -10,7 +12,7 @@
   },
   "permissions": {
     "allow": [
-      "Skill(*)",
+      "Skill",
       "Bash(brew info:*)",
       "Bash(brew list:*)",
       "Bash(brew search:*)",
@@ -110,17 +112,14 @@
       "Bash(xargs:*)"
     ]
   },
-  "model": "opus",
   "enableAllProjectMcpServers": true,
-  "alwaysThinkingEnabled": true,
   "hooks": {
     "Notification": [
       {
-        "matcher": "",
         "hooks": [
           {
             "type": "command",
-            "command": "cat | jq -r '(.title // \"Claude Code\"), (.message // \"通知が発生しました\")' | { read title; read message; osascript -e \"display notification \\\"$message\\\" with title \\\"$title\\\"\"; }"
+            "command": "~/.claude/hooks/notification.sh"
           }
         ]
       }
@@ -132,16 +131,6 @@
           {
             "type": "command",
             "command": "osascript -e 'display notification \"Claude is ready for more action!\" with title \"Claude Code\"'"
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/pre-compact.sh"
           }
         ]
       }
@@ -162,17 +151,6 @@
           {
             "type": "command",
             "command": "jq -r '.tool_input.file_path' | grep -qE '(\\.env|\\.git/|package-lock\\.json|credentials|secrets)' && { echo '⚠️ 保護されたファイルへの編集はブロックされました' >&2; exit 2; } || exit 0"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "matcher": "compact",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/restore-context.sh"
           }
         ]
       }
@@ -199,12 +177,44 @@
     "code-review@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
     "plugin-dev@claude-plugins-official": true,
-    "pr-review-toolkit@claude-plugins-official": true,
-    "drawio@cc-plugins": true
+    "pr-review-toolkit@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    },
+    "obsidian-skills": {
+      "source": {
+        "source": "github",
+        "repo": "kepano/obsidian-skills"
+      }
+    }
   },
   "outputStyle": "Explanatory",
+  "language": "japanese",
   "sandbox": {
     "enabled": true,
-    "autoAllowBashIfSandboxed": true
-  }
+    "autoAllowBashIfSandboxed": true,
+    "allowUnsandboxedCommands": false,
+    "network": {
+      "allowedDomains": [
+        "github.com",
+        "api.github.com",
+        "*.githubusercontent.com"
+      ],
+      "allowLocalBinding": true
+    },
+    "filesystem": {
+      "allowRead": [
+        "~/.config/gh"
+      ]
+    },
+    "enableWeakerNetworkIsolation": true
+  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
+  "remoteControlAtStartup": false
 }

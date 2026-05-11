@@ -31,7 +31,13 @@ bat = "latest"      # Cat clone with syntax highlighting
 eza = "latest"      # Modern replacement for ls
 jq = "latest"       # Command-line JSON processor
 starship = "latest" # Cross-shell prompt
-neovim = "latest"
+neovim = "latest"    # Hyperextensible Vim-based text editor
+lazygit = "latest"   # Simple terminal UI for git commands
+zoxide = "latest"     # A smarter cd command
+fzf = "latest"        # Command-line fuzzy finder
+ripgrep = "latest"     # Line-oriented search tool
+fd = "latest"          # Simple, fast and user-friendly alternative to find
+delta = "latest"       # Syntax-highlighting pager for git and diff output
 
 # ===== GitHub related =====
 gh = "latest"  # GitHub CLI
@@ -43,12 +49,20 @@ dive = "latest" # Docker image layer explorer
 # ===== Shell plugin manager (via ubi backend) =====
 "ubi:rossmacarthur/sheldon" = "latest" # Fast shell plugin manager
 
+# ===== APM (via GitHub backend) =====
+"github:microsoft/apm" = "latest"
+
 # ===== Language runtimes =====
 go = "latest"
 node = "lts"
 php = "latest"
 python = "latest"
 uv = "latest"
+pnpm = "latest"
+"npm:textlint" = "latest"
+"npm:secretlint" = "latest"
+"npm:textlint-rule-preset-ja-spacing" = "latest"
+"npm:textlint-rule-preset-ja-technical-writing" = "latest"
 
 [settings]
 auto_install = true

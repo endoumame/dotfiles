@@ -1,0 +1,67 @@
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "live"
+personality = "pragmatic"
+model_auto_compact_token_limit = 400000
+
+[sandbox_workspace_write]
+network_access = true
+
+[analytics]
+enabled = false
+
+[tui]
+status_line = ["current-dir", "git-branch", "model-with-reasoning", "context-used", "five-hour-limit", "weekly-limit"]
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+
+[projects."/Users/endou-mame/ghq/github.com/endoumame/php-phpstan-harness"]
+trust_level = "trusted"
+
+[projects."/Users/endou-mame/ghq/github.com/endoumame/typescript-oxc-template"]
+trust_level = "trusted"
+
+[marketplaces.openai-bundled]
+last_updated = "2026-05-01T16:15:45Z"
+source_type = "local"
+source = "/Users/endou-mame/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-05-01T16:16:01Z"
+source_type = "local"
+source = "/Users/endou-mame/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
+
+[plugins."browser-use@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."cloudflare@openai-curated"]
+enabled = true
+
+[hooks.state]
+
+[hooks.state."/Users/endou-mame/ghq/github.com/endoumame/typescript-oxc-template/.codex/hooks.json:post_tool_use:0:0"]
+trusted_hash = "sha256:6cb417e0451be44421b8b22027e5cbc12fae54a4948b62d8926bceabc34c9a51"
+
+[hooks.state."/Users/endou-mame/ghq/github.com/endoumame/typescript-oxc-template/.codex/hooks.json:post_tool_use:0:1"]
+trusted_hash = "sha256:841c80f7a3e6a5c7b56bf663aba4140a2617eda743ddad6a293025172ce81a87"
+
+[hooks.state."/Users/endou-mame/ghq/github.com/endoumame/typescript-oxc-template/.codex/hooks.json:pre_tool_use:0:0"]
+trusted_hash = "sha256:547343463227e305a58b5e0acbbe02d17a6e89f31e68ab37af7ab2fde15fc3fa"
+
+[hooks.state."/Users/endou-mame/ghq/github.com/endoumame/typescript-oxc-template/.codex/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:1c570ab65ac59f7230443162d08a9d74768b48c8143620de51978b84d9ac830c"

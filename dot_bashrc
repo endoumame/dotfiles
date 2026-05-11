@@ -20,37 +20,23 @@ HISTCONTROL=ignoredups:erasedups  # 重複を無視・削除
 shopt -s histappend               # 履歴を上書きではなく追記
 
 # =============================================================================
-# Homebrew
-# =============================================================================
-{{- if eq .chezmoi.os "darwin" }}
-if [[ -f /opt/homebrew/bin/brew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [[ -f /usr/local/bin/brew ]]; then
-    eval "$(/usr/local/bin/brew shellenv)"
-fi
-{{- else if eq .chezmoi.os "linux" }}
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-{{- end }}
-
-# =============================================================================
-# Mise (バージョン管理ツール)
-# https://mise.jdx.dev
-# =============================================================================
-eval "$(mise activate bash)"
-
-# =============================================================================
 # fastfetch (system info ツール)
 # https://github.com/fastfetch-cli/fastfetch
 # =============================================================================
 fastfetch
 
 # =============================================================================
-# starship (prompt)
-# https://starship.rs/
+# Sheldon (zsh/bash プラグイン管理)
+# https://github.com/rossmacarthur/sheldon
 # =============================================================================
-eval "$(starship init bash)"
+eval "$(sheldon --config-dir ~/.config/sheldon/bash source)"
 
 # =============================================================================
 # エイリアス読み込み
 # =============================================================================
 [[ -f "$HOME/.config/shell/alias.sh" ]] && . "$HOME/.config/shell/alias.sh"
+
+# =============================================================================
+# 関数読み込み
+# =============================================================================
+[[ -f "$HOME/.config/shell/functions.sh" ]] && . "$HOME/.config/shell/functions.sh"
